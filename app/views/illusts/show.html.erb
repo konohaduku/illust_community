@@ -1,2 +1,52 @@
-<h1>Illusts#show</h1>
-<p>Find me in app/views/illusts/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <!--%= render 'users/info', user: @book.user %>-->
+      <!--%= render 'form', book: @book_new %>-->
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to(@illust.user) do %>
+            <%= image_tag @illust.user.get_profile_image, size:"100x100" %>
+            <%= link_to @illust.title, @illust %>
+            <%= @illust.body %><br>
+            <%= @illust.user.name %>
+
+         　<!--<td id="favorite_buttons_%= @illust.id %>">-->
+　　　<!--%= render "favorites/favorite", illust: @illust %>-->
+　　</td>
+            <% end %>
+          </td>
+          </tr>
+            <% if @illust.user == current_user %>
+            <td><%= link_to 'Edit', edit_illust_path(@illust), class: "btn btn-sm btn-success" %></td>
+            <td><%= link_to 'Destroy', @illust, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+             <% end %>
+<div>
+  <tr>
+  <td>
+  <!--コメント件数：%= @book.book_comments.count %>-->
+  </td>
+  </tr>
+
+  <tr>
+
+  <!--%= render 'book_comments/form', book: @book, book_comment: @book_comment %>-->
+
+  </tr>
+   <tr>
+      <td>
+  <!--<div class="comments_area">-->
+  <!--%= render 'book_comments/book_comment', book: @book %>-->
+</div>
+</td>
+  </tr>
+</div>
+
+      </table>
+
+
+    </div>
+  </div>
+</div>

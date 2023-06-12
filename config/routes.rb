@@ -2,7 +2,7 @@ Rails.application.routes.draw do
  root to: "homes#top"
  devise_for :users
  resources :users, only: [:index,:show,:edit,:update]
-  resources :illusts, only: [:index,:show,:edit,:create,:destroy,:update]
+  resources :illusts, only: [:new,:index,:show,:edit,:create,:destroy,:update]
   get 'users/create'
   get 'users/destroy'
   
