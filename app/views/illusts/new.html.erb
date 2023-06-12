@@ -1,0 +1,41 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>作品投稿</h3>
+      <%= form_with model: @illust, url: illusts_path do |f| %>
+        <table>
+          <tr>
+            <th>画像</th>
+            <td><%= f.file_field :illust_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= f.text_field :illust_name, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>説明</th>
+            <td><%= f.text_area :illust_explanation, class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <td><%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :tag_name), class: "custom-input" %></td>
+          </tr>
+          <tr>
+            <th>AIイラスト</th>
+            <td>
+              <%= f.label :sales_status_on_sale, 'AIイラストです' %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :sales_status_draft, 'AIイラストではありません' %>
+              <%= f.radio_button :is_active, :false, checked: true %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit '投稿', class: "btn custom-button" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
