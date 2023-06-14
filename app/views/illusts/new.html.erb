@@ -17,9 +17,13 @@
             <td><%= f.text_area :illust_body, class: "custom-input" %></td>
           </tr>
           <tr>
-          <!--  <th>タグ</th>-->
-          <!--  <td>%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :tag_name), class: "custom-input" %></td>-->
-          <!--</tr>-->
+            <div class="field">
+              <th>タグ</th>
+              <td><%= f.text_field :name,value: @tag_list,class:"form-control"%></tb>
+              <br>
+              <td> <%= f.label" (,で区切ると複数タグ登録できます)" %></td>
+            </div>
+          </tr>
           <tr>
             <th>AIイラスト</th>
             <td>
@@ -34,8 +38,10 @@
               <%= f.submit '投稿', class: "btn custom-button" %>
             </td>
           </tr>
+          <% end %>
+
         </table>
-      <% end %>
+      <!--% end %>-->
     </div>
   </div>
 </div>

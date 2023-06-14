@@ -12,6 +12,10 @@
             <%= link_to @illust.title, @illust %>
             <%= @illust.body %><br>
             <%= @illust.user.name %>
+            <% @post_tags.each do |tag| %>
+            <%=tag.name%><%="(#{tag.posts.count})" %>
+            <% end %>
+
 
          　<!--<td id="favorite_buttons_%= @illust.id %>">-->
 　　　<!--%= render "favorites/favorite", illust: @illust %>-->
