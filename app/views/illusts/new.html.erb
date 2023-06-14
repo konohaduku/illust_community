@@ -14,12 +14,12 @@
           </tr>
           <tr>
             <th>説明</th>
-            <td><%= f.text_area :illust_explanation, class: "custom-input" %></td>
+            <td><%= f.text_area :illust_body, class: "custom-input" %></td>
           </tr>
           <tr>
-            <th>タグ</th>
-            <td><%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :tag_name), class: "custom-input" %></td>
-          </tr>
+          <!--  <th>タグ</th>-->
+          <!--  <td>%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :tag_name), class: "custom-input" %></td>-->
+          <!--</tr>-->
           <tr>
             <th>AIイラスト</th>
             <td>

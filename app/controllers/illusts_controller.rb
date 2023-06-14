@@ -1,8 +1,8 @@
 class IllustsController < ApplicationController
   def new
     @illust=Illust.new
-  end  
-  
+  end
+
   def index
     @illusts=Illust.all
     @illust=Illust.new
@@ -17,16 +17,15 @@ class IllustsController < ApplicationController
   end
 
   def create
-    @illust = Illust.new(illust_params)
+     @illust = Illust.new(illust_params)
     @illust.user_id = current_user.id
     if @illust.save
-      flash[:notice] = "作品を投稿しましした。"
-      redirect_to illust_path(@illust)
+      redirect_to illust_path(@illust), notice: "You have created illust successfully."
     else
-      @illust = Illust.new
-      render :index
+      @illusts = Illust.all
+      render "index"
     end
-  end
+    end
 
   def update
      @illust = Illust.find(params[:id])
@@ -42,4 +41,10 @@ class IllustsController < ApplicationController
     @illust.destroy
     redirect_to illusts_path
   end
+
+  private
+  def illust_params
+    params.require(:illust).permit(:title, :body)
+  end
+
 end
