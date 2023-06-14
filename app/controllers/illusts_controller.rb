@@ -1,7 +1,8 @@
 class IllustsController < ApplicationController
   def new
     @illust=Illust.new
-    @tag_list=@illust.tags.pluck(:name).join(',')
+    @tag_list=@illust.tags.pluck(:name).join('、')
+
   end
 
   def index
@@ -23,13 +24,14 @@ class IllustsController < ApplicationController
   def create
      @illust = Illust.new(illust_params)
     @illust.user_id = current_user.id
-    tag_list=params[:post][:name].split(',')
+    tag_list=params[:illust][:name].split('、')
     if @illust.save
        @illust.save_tag(tag_list)
-      redirect_to illust_path(@illust), notice: "You have created illust successfully."
+      flash[:notice] = "You have created illust successfully."
+      redirect_to illust_path(@illust)
     else
       @illusts = Illust.all
-      render "index"
+      render :new
     end
   end
 
@@ -43,7 +45,7 @@ class IllustsController < ApplicationController
     # それらを取り出し、消す。消し終わる
         @old_relations.each do |relation|
         relation.delete
-        end  
+        end
          @illust.save_tag(tag_list)
       redirect_to illust_path(@illust), notice: "編集が完了しました"
     else
@@ -56,7 +58,7 @@ class IllustsController < ApplicationController
     @illust.destroy
     redirect_to illusts_path
   end
-  
+
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

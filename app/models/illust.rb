@@ -8,4 +8,12 @@ class Illust < ApplicationRecord
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+  
+   def get_image(width, height)
+    unless item_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      item_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    item_image.variant(resize_to_fill: [width, height]).processed
+   end
 end

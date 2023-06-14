@@ -10,26 +10,29 @@
           </tr>
           <tr>
             <th>タイトル</th>
-            <td><%= f.text_field :illust_name, class: "custom-input" %></td>
+            <td><%= f.text_field :illust_name, class: "form-control custom-input" %></td>
           </tr>
           <tr>
             <th>説明</th>
-            <td><%= f.text_area :illust_body, class: "custom-input" %></td>
+            <td><%= f.text_area :illust_body, class: "form-control custom-input" %></td>
           </tr>
           <tr>
             <div class="field">
               <th>タグ</th>
-              <td><%= f.text_field :name,value: @tag_list,class:"form-control"%></tb>
-              <br>
-              <td> <%= f.label" (,で区切ると複数タグ登録できます)" %></td>
+              <td><%= f.text_field :name,value: @tag_list,class:"form-control custom-input"%></tb>
             </div>
           </tr>
           <tr>
+            <th></th>
+            <td><%= f.label" (,で区切ると複数タグ登録できます)" %></td>
+          </tr>
+
+          <tr>
             <th>AIイラスト</th>
             <td>
-              <%= f.label :sales_status_on_sale, 'AIイラストです' %>
+              <%= f.label :ai_status_on_ai, 'AIイラストです' %>
               <%= f.radio_button :is_active, :true %>
-              <%= f.label :sales_status_draft, 'AIイラストではありません' %>
+              <%= f.label :ai_status_draft, 'AIイラストではありません' %>
               <%= f.radio_button :is_active, :false, checked: true %>
             </td>
           </tr>

@@ -3,6 +3,15 @@
       <th colspan="3"></th>
     </tr>
     <% illusts.each do |illust| %>
+    <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text"></p>
+    <a href="#" class="btn btn-primary"></a>
+  </div>
+</div>
+<!--カードデザイン↑-->
       <tr>
         <td><%= link_to(illust.user) do %>
           <%= image_tag illust.user.get_profile_image, size:'50x50' %>
@@ -10,6 +19,16 @@
         </td>
         <td><%= link_to illust.title,illust %></td>
         <td><%= illust.body %></td>
+        <!--タグリスト-->
+    <% @tag_list.each do |tag_list|%>
+    <%=tag_list.name %>
+    <%="(#{tag_list.illusts.count})" %>
+    <% end %>
+
+    <!--投稿一覧画面で投稿に紐づくタグを表示-->
+    <% @illusts.each do |illust| %>
+    <i class="fas fa-tag"><%= illust.tags.map(&:name).join('、 ') %></i>
+    <% end %>
         　<td id="favorite_buttons_<%= illust.id %>">
     <td>
 　　　<!--%= render "favorites/favorite", illust: illust %>-->
