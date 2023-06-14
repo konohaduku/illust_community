@@ -1,32 +1,30 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<div class="container my-5">
+     <div class="my-4">
       <!--<div class="d-flex align-items-center ">-->
       <!--<div class="center-block">-->
       <h3>新規登録</h3>
-      <form>
-         <div class="mb-3">
-          <label for="exampleInputName1" class="form-label">ユーザーネーム</label>
-          <input type="name" class="form-control" id="exampleInputName1">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">メールアドレス</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">パスワード</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out65</label>
-        </div>
-        <button type="submit" class="btn btn-primary">新規登録</button>
-      </form>
-      <%= image_tag("イラスト36.2.png", alt: "マスコット１", width: "230", height: "300") %>
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+       <!--%= render "device/shared/error_messages", resource: resource %>-->
+      <table class="table table-borderless">
+         <tr>
+          <td class="py-1"><%= f.label :name, "ユーザーネーム"%></td>
+          <td class=""><%= f.text_field :name, placeholder: "ゲスト", autofocus: true, autocomplete: "name", class: "form-control custom-input" %></td>
+        </tr>
+        <tr>
+          <td class="col-2 py-1"><%= f.label :email, "メールアドレス"%></td>
+          <td class="col-5"><%= f.email_field :email, placeholder: "example@example.com", autofocus: true, autocomplete: "email", class: "form-control custom-input" %></td>
+        </tr>
+        <tr>
+          <td class="py-1"><%= f.label :password, "パスワード" %></td>
+          <td class=""><%= f.password_field :password, autocomplete: "current-password", class: "form-control custom-input" %></td>
+        </tr>
+        <tr>
+          <td class="py-1"></td>
+          <td class=""><%= f.submit "ログイン", class: "btn custom-button form-control", style: "width: 30%" %></td>
+        </tr>
+      </table>
+      <% end %>
       <!--</div>-->
       <!--</div>-->
     </div>
-  </div>
 </div>
