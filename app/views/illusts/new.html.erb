@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h3>作品投稿</h3>
-      <%= form_with model: @illust, url: illusts_path do |f| %>
+      <%= form_with(model: @illust, url: illusts_path, local: true) do |f| %>
         <table>
           <tr>
             <th>画像</th>
@@ -19,12 +19,16 @@
           <tr>
             <div class="field">
               <th>タグ</th>
-              <td><%= f.text_field :name,value: @tag_list,class:"form-control custom-input"%></tb>
+              <td><%= f.text_field :tag_name,value: @tag_list,class:"form-control custom-input"%></tb>
             </div>
           </tr>
           <tr>
             <th></th>
-            <td><%= f.label" (,で区切ると複数タグ登録できます)" %></td>
+            <td><%= f.label"スペースを入力することで複数のタグを付けることができます。" %></td><br>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.label"例：イラスト 猫　漫画" %></td>
           </tr>
 
           <tr>
@@ -38,7 +42,7 @@
           </tr>
           <tr>
             <td>
-              <%= f.submit '投稿', class: "btn custom-button" %>
+              <%= f.submit '投稿', class: "btn form-control custom-button" %>
             </td>
           </tr>
           <% end %>
