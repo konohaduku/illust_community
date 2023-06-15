@@ -6,7 +6,7 @@
         <table>
           <tr>
             <th>画像</th>
-            <td><%= f.file_field :illust_image, accept: "image/*" %></td>
+            <td><%= f.file_field :illust_image, multiple: true %></td>
           </tr>
           <tr>
             <th>タイトル</th>
@@ -17,14 +17,12 @@
             <td><%= f.text_area :illust_body, class: "form-control custom-input" %></td>
           </tr>
           <tr>
-            <div class="field">
-              <th>タグ</th>
-              <td><%= f.text_field :tag_name,value: @tag_list,class:"form-control custom-input"%></tb>
-            </div>
-          </tr>
+           <th>タグ</th>
+              <td><%= f.text_field :tag_list, value: @illust.tag_list.join(','), class: 'form-control custom-input' %></tb>
+           </tr>
           <tr>
             <th></th>
-            <td><%= f.label"スペースを入力することで複数のタグを付けることができます。" %></td><br>
+            <td><%= f.label",を入力することで複数のタグを付けることができます。" %></td><br>
           </tr>
           <tr>
             <th></th>

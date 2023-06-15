@@ -7,22 +7,17 @@
     <div class='col-md-8 offset-md-1'>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(@illust.user) do %>
-            <%= image_tag @illust.user.get_profile_image, size:"100x100" %>
-            <%= link_to @illust.illust_name, @illust %>
-            <%= @illust.body %><br>
-            <%= @illust.user.name %>
-            <%= "タグ: " %>
-            <%= @illust_tags.each do |tag| %>
-              <span>
-                <%= link_to tag.tag_name, tag_illusts_path(tag_id: tag.id) %>
-                <%= "(#{tag.illusts.count})" %>
-              </span>
-            <% end
-              <!--<td id="favorite_buttons_%= @illust.id %>">-->
+          <td>
+            <div class="img-container">
+            <% if @illust.illust_image.attached? %>
+              <% @illust.illust_image.each do |image| %>
+                <%= image_tag image, size: "500x500" %>
+              <% end %>
+            <% end %>
+            </div>
+            <!--<td id="favorite_buttons_%= @illust.id %>">-->
               <!--%= render "favorites/favorite", illust: @illust %>-->
 　　      </td>
-            <% end %>
           </td>
           </tr>
             <% if @illust.user == current_user %>

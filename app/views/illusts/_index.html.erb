@@ -2,31 +2,16 @@
     <tr>
     <td><%= link_to(illust.user) do %>
       <%= image_tag illust.user.get_profile_image, size:'50x50' %>
-
     </td>
     <td><%= link_to illust.illust_name,illust %></td>
+    <td><%= render 'illusts/tag_list', tag_list: illust.tag_list %></td>
 <% end %>
 
-    <!--投稿一覧画面で投稿に紐づくタグを表示-->
-    <% illusts.each do |illust| %>
-    <i class="fas fa-tag"><%= illust.tags.map(&:name).join('、 ') %></i>
-    <% end %>
         　<!--<td id="favorite_buttons_%= illust.id %>">-->
     <td>
 　　　<!--%= render "favorites/favorite", illust: illust %>-->
 　　　</td>
 　　</td>
-
-　　<h3>タグリスト</h3>
-    <%= tag_list.each do |list| %>
-     <span>
-    <%= link_to list.tag_name, tag_illusts_path(tag_id: list.id) %>
-    <%= "(#{list.illusts.count})" %>
-     </span>
-    <% end %>
-
-
      <!--<td><i class="fa-regular fa-comment"> %= "#{illust.illust_comments.count} "%></i></td>-->
-
       </tr>
       <% end %>
