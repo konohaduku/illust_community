@@ -22,7 +22,7 @@ class IllustsController < ApplicationController
     @illust.user_id = current_user.id
     if @illust.save
       flash[:notice] = "You have created illust successfully."
-      redirect_to illust_path(@illust)
+      redirect_to illusts_path(@illust)
     else
       @illust = Illust.new
       render :new

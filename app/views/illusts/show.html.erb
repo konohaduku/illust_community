@@ -15,10 +15,14 @@
               <% end %>
             <% end %>
             </div>
+            <%= @illust.illust_name %>
+            <%= @illust.illust_body %>
+            <%= @illust.is_active %>
             <!--<td id="favorite_buttons_%= @illust.id %>">-->
               <!--%= render "favorites/favorite", illust: @illust %>-->
 　　      </td>
-          </td>
+　　       <td><%= render 'illusts/tag_list', tag_list: @illust.tag_list %></td>
+
           </tr>
             <% if @illust.user == current_user %>
             <td><%= link_to 'Edit', edit_illust_path(@illust), class: "btn btn-sm btn-success" %></td>

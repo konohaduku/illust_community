@@ -1,11 +1,12 @@
 <% illusts.each do |illust| %>
     <tr>
-    <td><%= link_to(illust.user) do %>
-      <%= image_tag illust.user.get_profile_image, size:'50x50' %>
-    </td>
+   <td><%= link_to(illust.user) do %>
+          <%= image_tag illust.user.image, size:'100x100' %>
+          <% end %>
+        </td>
     <td><%= link_to illust.illust_name,illust %></td>
     <td><%= render 'illusts/tag_list', tag_list: illust.tag_list %></td>
-<% end %>
+
 
         　<!--<td id="favorite_buttons_%= illust.id %>">-->
     <td>
