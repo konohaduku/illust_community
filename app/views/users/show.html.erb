@@ -1,2 +1,57 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+     <h2><i class="fa-solid fa-user"> User info</i></h2>
+<table class='table'>
+  <!--<tr>%= image_tag @user.get_profile_image, size:'100x100' %></tr>-->
+  <tr>
+	  <th>name</th>
+	  <th><%= @user.name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <!--<th>%= @user.introduction %></th>-->
+  </tr>
+  <tr>
+  <!--  <th>follows</th>-->
+  <!--  <th>%= link_to user_followings_path(user) do %>-->
+  <!--    %= user.followings.count %>-->
+  <!--  % end %></th>-->
+  <!--</tr>-->
+  <!--<tr>-->
+  <!--  <th>followers</th>-->
+  <!--  <th>%= link_to user_followers_path(user) do %>-->
+  <!--    %= user.followers.count %>-->
+  <!--    % end %></th>-->
+  <!--</tr>-->
+  <!--<tr>-->
+  <!--% unless user == current_user %>-->
+  <!-- % if current_user.following?(user) %>-->
+  <!--      <td>%= link_to "フォローを解除", user_relationships_path(user.id), method: :delete %></td>-->
+  <!--      % else %>-->
+  <!--      <td>%= link_to "フォローする", user_relationships_path(user.id), method: :post %></td>-->
+  <!-- % end %>-->
+  <!--% end %>-->
+  <!--</tr>-->
+</table>
+
+
+<!--<div class='row'>-->
+<!--  %= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>-->
+<!--    <i class="fas fa-user-cog"></i>-->
+<!--  % end %>-->
+<!--</div>-->
+
+<% if @user.name != "guestuser" %>
+<div class='row'>
+  <%= link_to '',edit_user_path(@user),class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" %>
+  <i class="fas fa-user-cog"></i>
+  <% end %>
+</div>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2> illusts</h2>
+      <!--%= render 'illusts/index',illusts: @illusts %>-->
+    </div>
+  </div>
+</div>

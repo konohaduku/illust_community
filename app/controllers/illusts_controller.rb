@@ -6,7 +6,6 @@ class IllustsController < ApplicationController
 
   def index
     @illusts=Illust.all
-    @illust=current_user.illusts.new
   end
 
   def edit
@@ -18,7 +17,7 @@ class IllustsController < ApplicationController
   end
 
   def create
-     @illust = current_user.illusts.new(illust_params)
+    @illust = Illust.new(illust_params)
     @illust.user_id = current_user.id
     if @illust.save
       flash[:notice] = "You have created illust successfully."
@@ -37,13 +36,13 @@ class IllustsController < ApplicationController
       render "edit"
     end
 
-    
+
   end
 
 
   private
   def illust_params
-    params.require(:illust).permit(:illust_name, :illust_body, :is_active, :tag_list, illust_image: []).merge(user_id: current_user.id)
+    params.require(:illust).permit(:illust_name, :illust_body, :is_active, :tag_list, illust_images: []).merge(user_id: current_user.id)
   end
 
    def destroy

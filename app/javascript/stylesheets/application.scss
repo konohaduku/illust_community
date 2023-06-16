@@ -1,1 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
+
+.img-container img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}

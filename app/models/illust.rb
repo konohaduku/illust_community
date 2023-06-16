@@ -1,5 +1,5 @@
 class Illust < ApplicationRecord
-   has_many_attached :illust_image
+   has_many_attached :illust_images
     acts_as_taggable_on :tags
      belongs_to :user
      has_many :illust_comments, dependent: :destroy
@@ -15,6 +15,13 @@ class Illust < ApplicationRecord
 #     end
 #     illust_image.variant(resize_to_fill: [width, height]).processed
 #   end
+ def get_illust_image(width, height)
+    unless illust_images.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      illust_images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    illust_images.variant(resize_to_limit: [width, height]).processed
+ end
 
 
 
