@@ -9,8 +9,8 @@
   		  <tr>
           <td>
             <div class="img-container">
-            <% if @illust.illust_image.attached? %>
-              <% @illust.illust_image.each do |image| %>
+            <% if @illust.illust_images.attached? %>
+              <% @illust.illust_images.each do |image| %>
                 <%= image_tag image, size: "500x500" %>
               <% end %>
             <% end %>

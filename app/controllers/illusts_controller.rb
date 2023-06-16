@@ -6,6 +6,9 @@ class IllustsController < ApplicationController
 
   def index
     @illusts=Illust.all
+    if params[:tag_name]
+    @illusts = Illust.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def edit

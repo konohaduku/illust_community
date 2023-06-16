@@ -4,6 +4,9 @@ class Illust < ApplicationRecord
      belongs_to :user
      has_many :illust_comments, dependent: :destroy
      has_many :favorites, dependent: :destroy
+     
+     # mount_uploader :illust_image, ImageUploader
+     belongs_to :product
 
   validates :illust_name,presence:true
   validates :illust_body,presence:true,length:{maximum:200}
