@@ -1,8 +1,13 @@
 <% illusts.each do |illust| %>
     <tr>
-   <td><%= link_to(illust.user) do %>
-          <%= image_tag illust.user.image, size:'100x100' %>
+   <td>
+    <div class="img-container">
+       <%= link_to illust_path(illust.id) do %>
+          <% illust.illust_images.each do |illust_image| %>
+           <%= image_tag(illust_image, width:100, height:100) %>
           <% end %>
+        <% end %>
+    </div>
         </td>
     <td><%= link_to illust.illust_name,illust %></td>
     <td><%= render 'illusts/tag_list', tag_list: illust.tag_list %></td>

@@ -1,0 +1,4 @@
+<%= form_with model: @product, class:"form" do |f| %>
+  <!--/imageのform-->
+  <%= f.fields_for :images do |f_img| %>
+    <%= f_img.file_field :name, class: "hidden image_upload" %>
