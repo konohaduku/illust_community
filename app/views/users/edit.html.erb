@@ -1,2 +1,22 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h3>作品編集</h3>
+  		<%= form_with(model: @illust, url: illust_path, local: true) do |f| %>
+  		<div class="field">
+  		  <%= f.file_field :illust_images, multiple: true %><br>
+  		  <%= f.label"タイトル" %>
+  		  <%= f.text_field :illust_name, class: "form-control custom-input" %>
+  		  <%= f.label"説明" %>
+  		  <%= f.text_area :illust_body, class: "form-control custom-input" %>
+      </div>
+
+    　<!--<div class="actions" style="margin:20px 0;">-->
+        <%= f.submit "完了",class:"btn btn-outline-primary btn-block" %>
+        
+      <!--</div>-->
+      <% end %>
+
+  		<%= link_to '戻る', user_path, class: "back" %>
+  </div>
+</div>

@@ -3,7 +3,7 @@
   <div class='row'>
     <div class="col-sm12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h3>作品編集</h3>
-  		<%= form_with(model: @illust, url: illusts_path, local: true) do |f| %>
+  		<%= form_with(model: @illust, url: illust_path, local: true) do |f| %>
   		<div class="field">
   		  <%= f.file_field :illust_images, multiple: true %><br>
   		  <%= f.label"タイトル" %>
@@ -14,12 +14,14 @@
         <%= f.text_field :name,value: @tag_list,class:"form-control"%>
       </div>
 
-    　<div class="actions" style="margin:20px 0;">
+    　<!--<div class="actions" style="margin:20px 0;">-->
         <%= f.submit "完了",class:"btn btn-outline-primary btn-block" %>
-      </div>
+        <%= link_to '作品を削除', @illust, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-secondary btn-block"%>
+        
+      <!--</div>-->
       <% end %>
 
-  		<%= link_to 'Show', @illust %> |
-  		<%= link_to 'Back', illusts_path, class: "back" %>
+  		<%= link_to '一覧へ', @illust %> |
+  		<%= link_to '戻る', illusts_path, class: "back" %>
   </div>
 </div>
