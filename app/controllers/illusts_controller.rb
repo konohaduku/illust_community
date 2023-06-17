@@ -17,6 +17,9 @@ class IllustsController < ApplicationController
 
   def show
     @illust = Illust.find(params[:id])
+    if params[:tag_name]
+    @illusts = Illust.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def create
@@ -38,9 +41,16 @@ class IllustsController < ApplicationController
     else
       render "edit"
     end
-
-
   end
+    
+  def destroy
+    @illust = Illust.find(params[:id])
+    @illust.destroy
+    redirect_to illusts_path
+  end
+
+
+  
 
 
   private
@@ -48,11 +58,7 @@ class IllustsController < ApplicationController
     params.require(:illust).permit(:illust_name, :illust_body, :is_active, :tag_list, illust_images: []).merge(user_id: current_user.id)
   end
 
-   def destroy
-    @illust = Illust.find(params[:id])
-    @illust.destroy
-    redirect_to illusts_path
-   end
+  
 
 
 end
