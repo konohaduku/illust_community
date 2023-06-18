@@ -61,3 +61,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'acts-as-taggable-on', '~> 9.0'
 gem 'dotenv-rails'
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
