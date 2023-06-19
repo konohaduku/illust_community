@@ -1,0 +1,9 @@
+<div class="row">
+  <% tag_list.each do |tag|%>
+    <div class="col-md-6">
+      <div class="tag_list">
+        <%= link_to tag, illusts_path(tag_name: tag) %>
+      </div>
+    </div>
+</div>
+<% end %>

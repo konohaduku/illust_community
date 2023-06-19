@@ -1,0 +1,2 @@
+class IllustComment < ApplicationRecord
+end

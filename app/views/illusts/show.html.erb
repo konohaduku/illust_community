@@ -1,0 +1,43 @@
+<div class='container'>
+  <div class='row'>
+    <!--<div class='col-md-8 offset-md-1'>-->
+    <div class="col-lg-8" style="background-color: #f5f5f5;">
+      <div class="img-container2">
+        <% if @illust.illust_images.attached? %>
+          <% @illust.illust_images.each do |image| %>
+            <%= image_tag image %>
+          <% end %>
+        <% end %><br>
+        <h4><%= @illust.illust_name %></h4><br>
+        <%= @illust.illust_body %><br>
+         <% if @illust.is_active == true %>
+          #AIイラストです
+          <% elsif @illust.is_active == false %>
+          #AIイラストではありません
+          <% end %>
+
+  <%= render 'illusts/tag_list', tag_list: @illust.tag_list, class: "" %>
+  <td id="favorite_buttons_%= @illust.id %>">
+    <%= render "favorites/favorite", illust: @illust %>
+      </div>
+      </div>
+
+  <div class="col-lg-4">
+    <% if @illust.user == current_user %>
+    <%= link_to '編集', edit_illust_path(@illust), class: "btn btn-outline-secondary btn-block" %>
+     <% end %>
+  </div>
+<!--<div>-->
+  <!--コメント件数：%= @book.book_comments.count %>-->
+  <!--%= render 'book_comments/form', book: @book, book_comment: @book_comment %>-->
+
+  <!--<div class="comments_area">-->
+  <!--%= render 'book_comments/book_comment', book: @book %>-->
+<!--</div>-->
+<!--</div>-->
+
+  </div>
+</div>
+
+
+

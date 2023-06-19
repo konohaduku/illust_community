@@ -1,0 +1,55 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>作品投稿</h3>
+      <%= form_with(model: @illust, url: illusts_path, local: true) do |f| %>
+        <table>
+          <tr>
+            <th>画像</th>
+            <td><%= f.file_field :illust_images, multiple: true %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= f.text_field :illust_name, class: "form-control custom-input" %></td>
+          </tr>
+          <tr>
+            <th>説明</th>
+            <td><%= f.text_area :illust_body, class: "form-control custom-input" %></td>
+          </tr>
+          <tr>
+           <th>タグ</th>
+              <td><%= f.text_field :tag_list, value: @illust.tag_list.join(','), class: 'form-control custom-input' %></tb>
+           </tr>
+          <tr>
+            <th></th>
+            <td><%= f.label",を入力することで複数のタグを付けることができます。" %></td><br>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.label"例：イラスト 猫　漫画" %></td>
+          </tr>
+
+          <tr>
+            <th>AIイラスト</th>
+            <td>
+              <%= f.label :ai_status_on_ai, 'AIイラストです' %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :ai_status_draft, 'AIイラストではありません' %>
+              <%= f.radio_button :is_active, :false, checked: true %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.submit '投稿', class: "btn form-control custom-button" %>
+            </td>
+          </tr>
+          <% end %>
+
+
+          <!--IDを特定してーの後からプレビュー-->
+
+        </table>
+      <!--% end %>-->
+    </div>
+  </div>
+</div>
